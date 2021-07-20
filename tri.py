@@ -1,4 +1,4 @@
 import json
 
-def tri(fileinput):
-    print("test")
+def tri():
+    print("Hello tri\n")
