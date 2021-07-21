@@ -17,4 +17,4 @@ if __name__ == "__main__":
         if choice == 1:
             print(data)
         if choice == 2:
-            print(users.userlist(data))
+            print(users.usertab(data))
