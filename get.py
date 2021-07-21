@@ -20,7 +20,7 @@ def getfile(name):
     path = os.getcwd() + "/messages/inbox/"
     os.chdir(path)
     oslist = os.listdir()
-    r = re.compile(name)
+    r = re.compile(getname(name))
     conv = list(filter(r.match, oslist))
     conv = conv.__getitem__(0)
     os.chdir(path + "/" + conv)
@@ -29,3 +29,4 @@ def getfile(name):
 
     data_str = json.dumps(data)
     print(data_str)
+    os.chdir(originpath)
