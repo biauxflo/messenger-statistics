@@ -3,6 +3,7 @@ import get
 import users
 import json
 import decode
+import stats
 
 
 if __name__ == "__main__":
@@ -12,9 +13,11 @@ if __name__ == "__main__":
     data = get.getfile(name)  # data = json
     # choose action to do
     choice = 0
-    while choice != 3:
-        choice = int(input("\n1 - Afficher les messages\n2 - Afficher les participants\n3 - Quitter l\'application\n"))
+    while choice != 4:
+        choice = int(input("\n1 - Afficher les messages\n2 - Afficher les participants\n3 - Afficher les statistiques\n4 - Quitter l\'application\n"))
         if choice == 1:
             print(data)
         if choice == 2:
             print(users.usertab(data))
+        if choice == 3:
+            stats.counttalk(users.usertab(data), data)
