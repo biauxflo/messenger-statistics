@@ -35,4 +35,5 @@ def countreacts(data):
         except KeyError:
             pass
 
-    print(reactions)
+    for react in reactions:
+        print(react + " : " + str(reactions[react]) + " occurences")
