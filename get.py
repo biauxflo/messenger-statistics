@@ -15,7 +15,6 @@ def getname(name):
 
 
 def getfile(name):
-
     originpath = os.getcwd()
     path = os.getcwd() + "/messages/inbox/"
     os.chdir(path)
