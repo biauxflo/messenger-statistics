@@ -1,9 +1,12 @@
 import tri
 import get
+import json
 
 
 if __name__ == "__main__":
     # demander le nom de la conv à analyser
     name = str(input("Quel est le nom de la conversation à analyser ?"))
-    # give regex of conversation name
-    get.getfile(name)
+    # get json file
+    data = get.getfile(name)  # data = json
+    print(json.dumps(data))
+

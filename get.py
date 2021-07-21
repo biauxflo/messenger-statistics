@@ -26,7 +26,5 @@ def getfile(name):
     os.chdir(path + "/" + conv)
     with open("message_1.json") as messages:
         data = json.load(messages)
-
-    data_str = json.dumps(data)
-    print(data_str)
     os.chdir(originpath)
+    return data
