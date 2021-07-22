@@ -27,8 +27,7 @@ if __name__ == "__main__":
         if choice == 2:
             print(users.usertab(data))
         if choice == 3:
-            print("\nAffichage du nombre de messages envoyés \n")
-            stats.printtab(stats.counttalk(users.usertab(data), data))
+            stats.counttalk(data)
         if choice == 4:
             stats.countreacts(data)
         if choice == 5:
