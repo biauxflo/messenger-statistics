@@ -50,3 +50,14 @@ def countreacts(data):
             print(participants[participant][react], end=' ')
         print("")
 
+def countunset(data):
+    messages = data["messages"]
+    participants = users.userdico(data)
+    for participant in participants:
+        participants[participant] = 0
+    for msg in messages:
+        if msg["is_unsent"]:
+            participants[decode.string_decode(msg["sender_name"])] += 1
+
+    for nb_unsent in participants:
+        print(nb_unsent + " : " + str(participants[nb_unsent]))
