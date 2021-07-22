@@ -1,6 +1,21 @@
 import decode
 import users
 
+
+def lasttalk(data):
+    messages = data["messages"]
+    last_msg = users.userdico(data)
+    for participant in last_msg:
+        for msg in messages:
+            if decode.string_decode(msg["sender_name"]) == participant:
+                last_msg[participant] = decode.timestamp_decode(msg["timestamp_ms"])
+                break
+
+    for participant in last_msg:
+        print(participant + " : " + str(last_msg[participant]))
+
+
+
 def counttalk(data):
     messages = data["messages"]
     participants = users.userdico(data)
