@@ -18,3 +18,10 @@ def usertab(data):
     for i in range(len(usertab)):
         usertab[i] = str(usertab[i]).strip()
     return usertab
+
+
+def userdico(data):
+    userdict = {}
+    for participant in data["participants"]:
+        userdict[decode.string_decode(participant["name"])] = None
+    return userdict

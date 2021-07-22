@@ -1,4 +1,5 @@
 import decode
+import users
 
 def counttalk(usertab, data):
     tmp = ""
@@ -22,18 +23,30 @@ def printtab(tab):
 
 
 def countreacts(data):
-    reactions = {}
     messages = data["messages"]
-    for msg in messages:
-        try:
-            for react in msg["reactions"]:
-                react = decode.string_decode(react["reaction"])
-                if react in reactions:
-                    reactions[react] += 1
-                else:
-                    reactions[react] = 1
-        except KeyError:
-            pass
+    participants = users.userdico(data)
+    for participant in participants:
+        reactions = {}
+        for msg in messages:
+            try:
+                for react in msg["reactions"]:
+                    sender = decode.string_decode(react["actor"])
+                    react = decode.string_decode(react["reaction"])
+                    if participant == sender:
+                        if react in reactions:
+                            reactions[react] += 1
+                        else:
+                            reactions[react] = 1
+                    participants[participant] = reactions
+            except KeyError:
+                pass
 
-    for react in reactions:
-        print(react + " : " + str(reactions[react]) + " occurences")
+    for participant in participants:
+        print("\n" + participant + " : ")
+        for react in participants[participant]:
+            print(react, end=' ')
+        print("")
+        for react in participants[participant]:
+            print(participants[participant][react], end=' ')
+        print("")
+
