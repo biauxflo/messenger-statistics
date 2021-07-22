@@ -64,9 +64,9 @@ def countwords(data):
             message = decode.string_decode(msg["content"])
             message = message.replace("\'", " ")
             message = message.replace("’", " ")
-            if "a rejoint l" not in message:
+            if ("a rejoint la discussion" not in message) and ("a rejoint l appel" not in message) and ("la discussion vidéo est terminée"):
                 for word in message.split():
-                    if len(word) > 4:
+                    if len(word) > 3:
                         if word in count_words:
                             count_words[word] += 1
                         else:
@@ -81,3 +81,19 @@ def countwords(data):
         print(sorted_keys[i] + " : " + str(count_words[sorted_keys[i]]))
 
 
+def countspecificword(data):
+    messages = data["messages"]
+    searched_word = input("Quel mot voulez-vous cherchez dans la conversation ? ")
+    count_word = 0;
+    for msg in messages:
+        try:
+            message = decode.string_decode(msg["content"])
+            message = message.replace("\'", " ")
+            message = message.replace("’", " ")
+            for word in message.split():
+                if word == searched_word:
+                    count_word += 1
+        except KeyError:
+            pass
+
+    print("Le mot " + searched_word + " apparait " + str(count_word) + " fois.")
