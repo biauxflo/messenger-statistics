@@ -42,6 +42,7 @@ def countreacts(data):
             print(participants[participant][react], end=' ')
         print("")
 
+
 def countunset(data):
     messages = data["messages"]
     participants = users.userdico(data)
@@ -53,3 +54,30 @@ def countunset(data):
 
     for nb_unsent in participants:
         print(nb_unsent + " : " + str(participants[nb_unsent]))
+
+
+def countwords(data):
+    messages = data["messages"]
+    count_words = {}
+    for msg in messages:
+        try:
+            message = decode.string_decode(msg["content"])
+            message = message.replace("\'", " ")
+            message = message.replace("’", " ")
+            if "a rejoint l" not in message:
+                for word in message.split():
+                    if len(word) > 4:
+                        if word in count_words:
+                            count_words[word] += 1
+                        else:
+                            count_words[word] = 1
+        except KeyError:
+            pass
+
+    sorted_keys = sorted(count_words, key=count_words.get, reverse=True)
+
+    i = 0;
+    for i in range(10):
+        print(sorted_keys[i] + " : " + str(count_words[sorted_keys[i]]))
+
+
