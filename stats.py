@@ -23,7 +23,10 @@ def counttalk(data):
         participants[participant] = 0
     for msg in messages:
         if not msg["is_unsent"]:
-            participants[decode.string_decode(msg["sender_name"])] += 1
+            try:
+                participants[decode.string_decode(msg["sender_name"])] += 1
+            except KeyError:
+                participants["Autres"] += 1
 
     for nb_talk in participants:
         print(nb_talk + " : " + str(participants[nb_talk]))
@@ -65,7 +68,10 @@ def countunset(data):
         participants[participant] = 0
     for msg in messages:
         if msg["is_unsent"]:
-            participants[decode.string_decode(msg["sender_name"])] += 1
+            try:
+                participants[decode.string_decode(msg["sender_name"])] += 1
+            except KeyError:
+                participants["Autres"] += 1
 
     for nb_unsent in participants:
         print(nb_unsent + " : " + str(participants[nb_unsent]))

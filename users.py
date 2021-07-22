@@ -24,4 +24,5 @@ def userdico(data):
     userdict = {}
     for participant in data["participants"]:
         userdict[decode.string_decode(participant["name"])] = None
+    userdict["Autres"] = None
     return userdict
