@@ -87,7 +87,7 @@ def countwords(data):
             message = message.replace("’", " ")
             if ("a rejoint la discussion" not in message) and ("a rejoint l appel" not in message) and ("la discussion vidéo est terminée"):
                 for word in message.split():
-                    if len(word) > 3:
+                    if len(word) > 4:
                         if word in count_words:
                             count_words[word] += 1
                         else:

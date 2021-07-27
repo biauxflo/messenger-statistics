@@ -1,13 +1,13 @@
-import tri
 import get
 import users
-import json
-import decode
 import stats
 import os
+from tkinter import Tk
 
 
 if __name__ == "__main__":
+    root = Tk()
+    root.mainloop()
     # demander le nom de la conv à analyser
     originpath = os.getcwd()
     name = '.'
