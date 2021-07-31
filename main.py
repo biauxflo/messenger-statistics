@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 class App(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -24,6 +23,7 @@ if __name__ == "__main__":
     main = App(master=root)
 
     main.master.title("Messenger Statistics")
+    main.master.iconbitmap("img/messenger_stats.ico")
     main.master.minsize(640, 400)
 
     menubar = tk.Menu(main)
