@@ -4,7 +4,7 @@ import json
 
 
 def getname(name):
-    # remove whitspaces
+    # remove whitespaces
     conv = name.replace(" ", "")
     # lowercase
     conv = conv.lower()

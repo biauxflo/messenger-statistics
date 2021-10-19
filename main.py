@@ -29,12 +29,12 @@ if __name__ == "__main__":
         if choice == 5:
             name = '.'
             while name == '.':
-                name = str(input( "\nQuel est le nom de la conversation à analyser ? \n"))
+                name = str(input( "\nQuel est le nom de la conversation à analyser ? (sans espaces)\n"))
                 # get json file
                 try:
-                    data = get.getfile( name )  # data = json
+                    data = get.getfile(name)  # data = json
                 except IndexError:
-                    os.chdir( originpath )
+                    os.chdir(originpath)
                     print( "Désolé, Conversation non trouvée." )
                     name = '.'
         if choice == 6:
